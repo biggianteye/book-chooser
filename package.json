@@ -1,0 +1,23 @@
+{
+  "name": "book-chooser",
+  "description": "A Google Sheets-driven tool for choosing the next book to read",
+  "version": "0.0.1",
+  "main": "index.js",
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/biggianteye/book-chooser.git"
+  },
+  "keywords": [
+    "books"
+  ],
+  "author": "Burhan Ali",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/biggianteye/book-chooser/issues"
+  },
+  "homepage": "https://github.com/biggianteye/book-chooser#readme"
+}
