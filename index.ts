@@ -2,6 +2,22 @@ import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { Authorize } from './authorisation.js';
 import 'dotenv/config';
 
+class Book {
+    title: string;
+    author: string;
+    yearPublished: number;
+    goodreadsLink: string;
+    goodreadsRating: number;
+
+    constructor(title: string, author: string, yearPublished: number, goodreadsLink: string, goodreadsRating: number) {
+        this.title = title;
+        this.author = author;
+        this.yearPublished = yearPublished;
+        this.goodreadsLink = goodreadsLink;
+        this.goodreadsRating = goodreadsRating;
+    }
+}
+
 async function main() {
     // Initialize the OAuth2Client with your app's oauth credentials
     const oauthClient = await Authorize();
@@ -13,10 +29,19 @@ async function main() {
 
     // Just grab the first available book title for now.
     const booksSheet = doc.sheetsByTitle["Books"];
-    const rows = await booksSheet.getRows({ limit: 1 });
-    const title = rows[0].get('Title');
-    const author = rows[0].get('Author');
-    console.log(`'${title}' by ${author}.`);
+    const rows = await booksSheet.getRows();
+    let books: Book[] = new Array();
+    rows.forEach((row) => {
+        books.push(new Book(
+            row.get('Title'),
+            row.get('Author'),
+            row.get('Year published'),
+            row.get('Goodreads link'),
+            row.get('Goodreads rating')
+        ));
+    });
+    const randomBook = books[Math.floor(Math.random() * books.length)];
+    console.log(`'${randomBook.title}' by ${randomBook.author}.`);
 }
 
 main();
