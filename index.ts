@@ -16,7 +16,7 @@ async function main() {
     // Just grab the first available book title for now.
     const booksSheet = doc.sheetsByTitle["Books"];
     const rows = await booksSheet.getRows();
-    let books: Book[] = new Array();
+    const books: Book[] = [];
     rows.forEach((row) => {
         books.push(new Book(
             row.get('Title'),
