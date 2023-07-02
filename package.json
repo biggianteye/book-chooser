@@ -4,7 +4,8 @@
   "version": "0.0.2",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "eslint --ext .ts ."
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,9 @@
   },
   "devDependencies": {
     "@types/node": "^20.3.2",
+    "@typescript-eslint/eslint-plugin": "^5.60.1",
+    "@typescript-eslint/parser": "^5.60.1",
+    "eslint": "^8.44.0",
     "typescript": "^5.1.6"
   }
 }
