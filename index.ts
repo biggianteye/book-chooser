@@ -1,22 +1,8 @@
 import { GoogleSpreadsheet } from 'google-spreadsheet';
-import { Authorize } from './authorisation.js';
+import { Authorize } from './authorisation';
 import 'dotenv/config';
-
-class Book {
-    title: string;
-    author: string;
-    yearPublished: number;
-    goodreadsLink: string;
-    goodreadsRating: number;
-
-    constructor(title: string, author: string, yearPublished: number, goodreadsLink: string, goodreadsRating: number) {
-        this.title = title;
-        this.author = author;
-        this.yearPublished = yearPublished;
-        this.goodreadsLink = goodreadsLink;
-        this.goodreadsRating = goodreadsRating;
-    }
-}
+import { Book } from './types';
+import { Chooser } from './chooser';
 
 async function main() {
     // Initialize the OAuth2Client with your app's oauth credentials
@@ -40,7 +26,9 @@ async function main() {
             row.get('Goodreads rating')
         ));
     });
-    const randomBook = books[Math.floor(Math.random() * books.length)];
+
+    const chooser = new Chooser();
+    const randomBook = chooser.choose(books);
     console.log(`'${randomBook.title}' by ${randomBook.author}.`);
 }
 
