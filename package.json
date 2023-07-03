@@ -6,7 +6,8 @@
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
         "lint": "eslint --ext .ts .",
-        "format": "prettier --ignore-path .gitignore --write \"**/*.ts\""
+        "format": "prettier --ignore-path .gitignore --write \"**/*.ts\"",
+        "choose": "ts-node src/index.ts"
     },
     "repository": {
         "type": "git",
