@@ -14,17 +14,19 @@ async function main() {
     await doc.loadInfo();
 
     // Just grab the first available book title for now.
-    const booksSheet = doc.sheetsByTitle["Books"];
+    const booksSheet = doc.sheetsByTitle['Books'];
     const rows = await booksSheet.getRows();
-    let books: Book[] = new Array();
+    const books: Book[] = [];
     rows.forEach((row) => {
-        books.push(new Book(
-            row.get('Title'),
-            row.get('Author'),
-            row.get('Year published'),
-            row.get('Goodreads link'),
-            row.get('Goodreads rating')
-        ));
+        books.push(
+            new Book(
+                row.get('Title'),
+                row.get('Author'),
+                row.get('Year published'),
+                row.get('Goodreads link'),
+                row.get('Goodreads rating')
+            )
+        );
     });
 
     const chooser = new Chooser();
