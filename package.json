@@ -1,39 +1,39 @@
 {
-  "name": "book-chooser",
-  "description": "A Google Sheets-driven tool for choosing the next book to read",
-  "version": "0.0.2",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint --ext .ts .",
-    "format": "prettier --ignore-path .gitignore --write \"**/*.ts\""
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+ssh://git@github.com/biggianteye/book-chooser.git"
-  },
-  "keywords": [
-    "books"
-  ],
-  "author": "Burhan Ali",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/biggianteye/book-chooser/issues"
-  },
-  "homepage": "https://github.com/biggianteye/book-chooser#readme",
-  "dependencies": {
-    "@google-cloud/local-auth": "^2.1.1",
-    "dotenv": "^16.3.1",
-    "google-auth-library": "^8.8.0",
-    "google-spreadsheet": "^4.0.2",
-    "googleapis": "^120.0.0"
-  },
-  "devDependencies": {
-    "@types/node": "^20.3.2",
-    "@typescript-eslint/eslint-plugin": "^5.60.1",
-    "@typescript-eslint/parser": "^5.60.1",
-    "eslint": "^8.44.0",
-    "prettier": "^2.8.8",
-    "typescript": "^5.1.6"
-  }
+    "name": "book-chooser",
+    "description": "A Google Sheets-driven tool for choosing the next book to read",
+    "version": "0.0.2",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "lint": "eslint --ext .ts .",
+        "format": "prettier --ignore-path .gitignore --write \"**/*.ts\""
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+ssh://git@github.com/biggianteye/book-chooser.git"
+    },
+    "keywords": [
+        "books"
+    ],
+    "author": "Burhan Ali",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/biggianteye/book-chooser/issues"
+    },
+    "homepage": "https://github.com/biggianteye/book-chooser#readme",
+    "dependencies": {
+        "@google-cloud/local-auth": "^2.1.1",
+        "dotenv": "^16.3.1",
+        "google-auth-library": "^8.8.0",
+        "google-spreadsheet": "^4.0.2",
+        "googleapis": "^120.0.0"
+    },
+    "devDependencies": {
+        "@types/node": "^20.3.2",
+        "@typescript-eslint/eslint-plugin": "^5.60.1",
+        "@typescript-eslint/parser": "^5.60.1",
+        "eslint": "^8.44.0",
+        "prettier": "^2.8.8",
+        "typescript": "^5.1.6"
+    }
 }
