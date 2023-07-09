@@ -36,8 +36,8 @@ async function main() {
     });
 
     const chooser = new Chooser();
-    const randomBook = chooser.choose(books);
-    console.log(`'${randomBook.title}' by ${randomBook.author}.`);
+    const choice = chooser.choose(books);
+    console.log(`'${choice.title}' by ${choice.author}.`);
 }
 
 main();
