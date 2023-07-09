@@ -1,7 +1,7 @@
 import { GoogleSpreadsheet } from 'google-spreadsheet';
 import { Authorize } from './authorisation';
 import 'dotenv/config';
-import { Book } from './types';
+import { Book, Tag } from './types';
 import { Chooser } from './chooser';
 
 async function main() {
@@ -13,11 +13,10 @@ async function main() {
     // loads document properties and worksheets
     await doc.loadInfo();
 
-    // Just grab the first available book title for now.
     const booksSheet = doc.sheetsByTitle['Books'];
-    const rows = await booksSheet.getRows();
+    const bookRows = await booksSheet.getRows();
     const books: Book[] = [];
-    rows.forEach((row) => {
+    bookRows.forEach((row) => {
         books.push(
             new Book(
                 row.get('Title'),
@@ -27,6 +26,13 @@ async function main() {
                 row.get('Goodreads rating')
             )
         );
+    });
+
+    const tagsSheet = doc.sheetsByTitle['Tags'];
+    const tagRows = await tagsSheet.getRows();
+    const tags: Tag[] = [];
+    tagRows.forEach((row) => {
+        tags.push(new Tag(row.get('Name'), row.get('Modifier')));
     });
 
     const chooser = new Chooser();

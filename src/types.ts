@@ -19,3 +19,13 @@ export class Book {
         this.goodreadsRating = goodreadsRating;
     }
 }
+
+export class Tag {
+    name: string;
+    modifier: number;
+
+    constructor(name: string, modifier: number) {
+        this.name = name;
+        this.modifier = modifier;
+    }
+}
