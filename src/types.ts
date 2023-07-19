@@ -16,14 +16,14 @@ export class Book {
     ) {
         this.title = title;
         this.author = author;
-        this.yearPublished = yearPublished;
+        this.yearPublished = Number(yearPublished);
         this.goodreadsLink = goodreadsLink;
-        this.goodreadsRating = goodreadsRating;
+        this.goodreadsRating = Number(goodreadsRating);
         this.tags = tags;
     }
 
     getCalculatedRating(): number {
-        const tagSum = this.tags.reduce((result: number, tag: Tag) => {
+        const tagSum = this.tags.reduce((result: number, tag: Tag): number => {
             return result + tag.modifier;
         }, 0);
         return tagSum + this.goodreadsRating;
@@ -57,7 +57,7 @@ export class Tag {
 
     constructor(name: string, modifier: number) {
         this.name = name;
-        this.modifier = modifier;
+        this.modifier = Number(modifier);
     }
 
     toString(): string {
