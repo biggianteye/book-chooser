@@ -64,7 +64,8 @@ export class Spreadsheet {
                     row.get('Author'),
                     row.get('Year published'),
                     row.get('Goodreads link'),
-                    row.get('Goodreads rating')
+                    row.get('Goodreads rating'),
+                    bookTags.get(row.get('Title'))
                 )
             );
         });

@@ -9,7 +9,7 @@ async function main() {
     const chooser = new Chooser();
     const choice = chooser.choose(books);
 
-    console.log(`'${choice.title}' by ${choice.author}.`);
+    console.log(`${choice}`);
 }
 
 main();
