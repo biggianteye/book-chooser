@@ -1,3 +1,4 @@
+import { faker } from '@faker-js/faker';
 import { Book, Tag } from './types';
 
 describe('calculated book ratings', () => {
@@ -74,3 +75,42 @@ describe('book display', () => {
         expect(book.toString()).toEqual(expected);
     });
 });
+
+describe('whether or not a book has a tag', () => {
+    const emptyTagList = [];
+    const tagList = [
+        new Tag('lorem', 0),
+        new Tag('ipsum', 0),
+        new Tag('dolor', 0),
+    ];
+
+    const testCases = [
+        ['empty tags, null name', emptyTagList, null, false],
+        ['empty tags, empty name', emptyTagList, '', false],
+        ['empty tags, regular name', emptyTagList, 'lorem', false],
+        ['regular tags, null name', tagList, null, false],
+        ['regular tags, empty name', tagList, '', false],
+        ['regular tags, non-existent name', tagList, 'sit', false],
+        ['regular tags, existing name', tagList, 'lorem', true],
+    ];
+
+    it.each(testCases)(
+        '%s',
+        (name: string, tags: Tag[], tagName: string, expected: boolean) => {
+            const book = getRandomBook();
+            book.tags = tags;
+
+            expect(book.hasTag(tagName)).toEqual(expected);
+        }
+    );
+});
+
+function getRandomBook(): Book {
+    return new Book(
+        faker.commerce.productName(),
+        faker.person.fullName(),
+        faker.number.int({ min: 1900, max: new Date().getFullYear() }),
+        faker.internet.url(),
+        faker.number.float({ min: 1, max: 5, precision: 0.01 })
+    );
+}

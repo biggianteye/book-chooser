@@ -29,6 +29,14 @@ export class Book {
         return tagSum + this.goodreadsRating;
     }
 
+    hasTag(name: string): boolean {
+        return this.tags
+            .map((t: Tag) => {
+                return t.name;
+            })
+            .includes(name);
+    }
+
     toString(): string {
         const output: string[] = [
             `"${this.title}" by ${this.author} (${this.yearPublished})`,
