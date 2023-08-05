@@ -63,9 +63,13 @@ export class Tag {
     name: string;
     modifier: number;
 
-    constructor(name: string, modifier: number) {
+    constructor(name: string, modifier?: number) {
         this.name = name;
-        this.modifier = Number(modifier);
+        if (modifier == undefined) {
+            this.modifier = 0;
+        } else {
+            this.modifier = Number(modifier);
+        }
     }
 
     toString(): string {
