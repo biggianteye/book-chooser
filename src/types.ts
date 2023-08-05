@@ -37,6 +37,11 @@ export class Book {
             .includes(name);
     }
 
+    setTags(tags: Tag[]): Book {
+        this.tags = tags;
+        return this;
+    }
+
     toString(): string {
         const output: string[] = [
             `"${this.title}" by ${this.author} (${this.yearPublished})`,
