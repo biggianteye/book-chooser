@@ -28,6 +28,7 @@
     "google-auth-library": "^8.8.0",
     "google-spreadsheet": "^4.0.2",
     "googleapis": "^120.0.0",
+    "ts-command-line-args": "^2.5.1",
     "ts-node": "^10.9.1"
   },
   "devDependencies": {
