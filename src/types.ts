@@ -29,6 +29,19 @@ export class Book {
         return tagSum + this.goodreadsRating;
     }
 
+    hasTag(name: string): boolean {
+        return this.tags
+            .map((t: Tag) => {
+                return t.name;
+            })
+            .includes(name);
+    }
+
+    setTags(tags: Tag[]): Book {
+        this.tags = tags;
+        return this;
+    }
+
     toString(): string {
         const output: string[] = [
             `"${this.title}" by ${this.author} (${this.yearPublished})`,
@@ -55,9 +68,13 @@ export class Tag {
     name: string;
     modifier: number;
 
-    constructor(name: string, modifier: number) {
+    constructor(name: string, modifier?: number) {
         this.name = name;
-        this.modifier = Number(modifier);
+        if (modifier == undefined) {
+            this.modifier = 0;
+        } else {
+            this.modifier = Number(modifier);
+        }
     }
 
     toString(): string {

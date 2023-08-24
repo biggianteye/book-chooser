@@ -28,9 +28,11 @@
     "google-auth-library": "^8.8.0",
     "google-spreadsheet": "^4.0.2",
     "googleapis": "^120.0.0",
+    "ts-command-line-args": "^2.5.1",
     "ts-node": "^10.9.1"
   },
   "devDependencies": {
+    "@faker-js/faker": "^8.0.2",
     "@types/jest": "^29.5.2",
     "@types/node": "^20.3.2",
     "@typescript-eslint/eslint-plugin": "^5.60.1",

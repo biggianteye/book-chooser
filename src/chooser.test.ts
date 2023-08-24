@@ -50,4 +50,31 @@ describe('choose method', () => {
         expect(choice).not.toBeNull();
         expect(choice.title).toEqual('Positive Book 1');
     });
+
+    describe('exclusion by single tag', () => {
+        const alphaTag = new Tag('alpha');
+        const betaTag = new Tag('beta');
+        const gammaTag = new Tag('gamma');
+
+        const bookOne = new Book('Book One', '', 0, '', 5, [alphaTag, gammaTag]);
+        const bookTwo = new Book('Book Two', '', 0, '', 5, [betaTag, gammaTag]);
+
+        const testCases = [
+            ['tag exists on some books', 'alpha', bookTwo],
+            ['tag exists on all books', 'gamma', null],
+            ['tag is on no books', 'delta', bookOne],
+        ];
+
+        it.each(testCases)('%s', (name: string, tagName: string, expectedBook: Book) => {
+            const books = [bookOne, bookTwo];
+            const choice = new Chooser({ excludeTags: [tagName] }).choose(books);
+
+            if (expectedBook == null) {
+                expect(choice).toBeNull();
+            } else {
+                expect(choice).not.toBeNull();
+                expect(choice).toEqual(expectedBook);
+            }
+        });
+    });
 });

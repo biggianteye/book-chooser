@@ -1,4 +1,5 @@
 import { Book, Tag } from './types';
+import { getRandomBook } from './testHelpers';
 
 describe('calculated book ratings', () => {
     const testCases = [
@@ -73,4 +74,33 @@ describe('book display', () => {
     it.each(testCases)('%s', (name: string, book: Book, expected: string) => {
         expect(book.toString()).toEqual(expected);
     });
+});
+
+describe('whether or not a book has a tag', () => {
+    const emptyTagList = [];
+    const tagList = [
+        new Tag('lorem', 0),
+        new Tag('ipsum', 0),
+        new Tag('dolor', 0),
+    ];
+
+    const testCases = [
+        ['empty tags, null name', emptyTagList, null, false],
+        ['empty tags, empty name', emptyTagList, '', false],
+        ['empty tags, regular name', emptyTagList, 'lorem', false],
+        ['regular tags, null name', tagList, null, false],
+        ['regular tags, empty name', tagList, '', false],
+        ['regular tags, non-existent name', tagList, 'sit', false],
+        ['regular tags, existing name', tagList, 'lorem', true],
+    ];
+
+    it.each(testCases)(
+        '%s',
+        (name: string, tags: Tag[], tagName: string, expected: boolean) => {
+            const book = getRandomBook();
+            book.tags = tags;
+
+            expect(book.hasTag(tagName)).toEqual(expected);
+        }
+    );
 });
