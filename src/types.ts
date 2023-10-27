@@ -4,6 +4,7 @@ export class Book {
     yearPublished: number;
     goodreadsLink: string;
     goodreadsRating: number;
+    started: string;
     tags: Tag[];
 
     constructor(
@@ -12,6 +13,7 @@ export class Book {
         yearPublished: number,
         goodreadsLink: string,
         goodreadsRating: number,
+        started: string,
         tags: Tag[] = []
     ) {
         this.title = title;
@@ -19,6 +21,7 @@ export class Book {
         this.yearPublished = Number(yearPublished);
         this.goodreadsLink = goodreadsLink;
         this.goodreadsRating = Number(goodreadsRating);
+        this.started = started;
         this.tags = tags;
     }
 
@@ -43,10 +46,7 @@ export class Book {
     }
 
     toString(): string {
-        const output: string[] = [
-            `"${this.title}" by ${this.author} (${this.yearPublished})`,
-            `${this.goodreadsLink}`,
-        ];
+        const output: string[] = [`"${this.title}" by ${this.author} (${this.yearPublished})`, `${this.goodreadsLink}`];
 
         if (this.tags.length > 0) {
             const tags: string = [...this.tags]
