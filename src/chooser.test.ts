@@ -7,7 +7,7 @@ describe('choose method', () => {
     const negativeTag = new Tag('type:negative', -1);
 
     test('a choice is made', () => {
-        const books = [new Book('the title', '', 0, '', 0)];
+        const books = [new Book('the title', '', 0, '', 0, '')];
 
         const choice = new Chooser().choose(books);
 
@@ -17,8 +17,8 @@ describe('choose method', () => {
 
     test('positive tags have higher priority', () => {
         const books = [
-            new Book('Positive Book', '', 0, '', 0, [positiveTag]),
-            new Book('Neutral Book', '', 0, '', 0, [neutralTag]),
+            new Book('Positive Book', '', 0, '', 0, '', [positiveTag]),
+            new Book('Neutral Book', '', 0, '', 0, '', [neutralTag]),
         ];
 
         const choice = new Chooser().choose(books);
@@ -29,8 +29,8 @@ describe('choose method', () => {
 
     test('negative tags have lower priority', () => {
         const books = [
-            new Book('Negative Book', '', 0, '', 0, [negativeTag]),
-            new Book('Neutral Book', '', 0, '', 0, [neutralTag]),
+            new Book('Negative Book', '', 0, '', 0, '', [negativeTag]),
+            new Book('Neutral Book', '', 0, '', 0, '', [neutralTag]),
         ];
 
         const choice = new Chooser().choose(books);
@@ -41,8 +41,8 @@ describe('choose method', () => {
 
     test('first book chosen when they are equal', () => {
         const books = [
-            new Book('Positive Book 1', '', 0, '', 0, [positiveTag]),
-            new Book('Positive Book 2', '', 0, '', 0, [positiveTag]),
+            new Book('Positive Book 1', '', 0, '', 0, '', [positiveTag]),
+            new Book('Positive Book 2', '', 0, '', 0, '', [positiveTag]),
         ];
 
         const choice = new Chooser().choose(books);
@@ -56,8 +56,8 @@ describe('choose method', () => {
         const betaTag = new Tag('beta');
         const gammaTag = new Tag('gamma');
 
-        const bookOne = new Book('Book One', '', 0, '', 5, [alphaTag, gammaTag]);
-        const bookTwo = new Book('Book Two', '', 0, '', 5, [betaTag, gammaTag]);
+        const bookOne = new Book('Book One', '', 0, '', 5, '', [alphaTag, gammaTag]);
+        const bookTwo = new Book('Book Two', '', 0, '', 5, '', [betaTag, gammaTag]);
 
         const testCases = [
             ['tag exists on some books', 'alpha', bookTwo],

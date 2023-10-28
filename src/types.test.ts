@@ -3,10 +3,10 @@ import { getRandomBook } from './testHelpers';
 
 describe('calculated book ratings', () => {
     const testCases = [
-        ['no tags', new Book('', '', 0, '', 2.5), 2.5],
+        ['no tags', new Book('', '', 0, '', 2.5, ''), 2.5],
         [
             'some tags',
-            new Book('', '', 0, '', 3.5, [
+            new Book('', '', 0, '', 3.5, '', [
                 new Tag('positive', 1),
                 new Tag('negative', -1),
                 new Tag('neutral', 0),
@@ -38,36 +38,28 @@ describe('book display', () => {
     const testCases = [
         [
             'no tags',
-            new Book('AAA', 'BBB', 2003, 'https://www.goodreads.com/...', 5),
+            new Book('AAA', 'BBB', 2003, 'https://www.goodreads.com/...', 5, ''),
             //             `"AAA" by BBB (1900),
             // https://www.goodreads.com/...`,
             [`"AAA" by BBB (2003)`, `https://www.goodreads.com/...`].join('\n'),
         ],
         [
             'positive, negative and neutral tags',
-            new Book('CCC', 'DDD', 2011, 'https://www.goodreads.com/...', 5, [
+            new Book('CCC', 'DDD', 2011, 'https://www.goodreads.com/...', 5, '', [
                 new Tag('xxx', -1),
                 new Tag('yyy', 1),
                 new Tag('zzz', 0),
             ]),
-            [
-                `"CCC" by DDD (2011)`,
-                `https://www.goodreads.com/...`,
-                `[xxx(-)] [yyy(+)] [zzz]`,
-            ].join('\n'),
+            [`"CCC" by DDD (2011)`, `https://www.goodreads.com/...`, `[xxx(-)] [yyy(+)] [zzz]`].join('\n'),
         ],
         [
             'tags are alphabetical',
-            new Book('EEE', 'FFF', 2017, 'https://www.goodreads.com/...', 5, [
+            new Book('EEE', 'FFF', 2017, 'https://www.goodreads.com/...', 5, '', [
                 new Tag('vvv', 1),
                 new Tag('uuu', -1),
                 new Tag('www', 0),
             ]),
-            [
-                `"EEE" by FFF (2017)`,
-                `https://www.goodreads.com/...`,
-                `[uuu(-)] [vvv(+)] [www]`,
-            ].join('\n'),
+            [`"EEE" by FFF (2017)`, `https://www.goodreads.com/...`, `[uuu(-)] [vvv(+)] [www]`].join('\n'),
         ],
     ];
 
@@ -78,11 +70,7 @@ describe('book display', () => {
 
 describe('whether or not a book has a tag', () => {
     const emptyTagList = [];
-    const tagList = [
-        new Tag('lorem', 0),
-        new Tag('ipsum', 0),
-        new Tag('dolor', 0),
-    ];
+    const tagList = [new Tag('lorem', 0), new Tag('ipsum', 0), new Tag('dolor', 0)];
 
     const testCases = [
         ['empty tags, null name', emptyTagList, null, false],
@@ -94,13 +82,10 @@ describe('whether or not a book has a tag', () => {
         ['regular tags, existing name', tagList, 'lorem', true],
     ];
 
-    it.each(testCases)(
-        '%s',
-        (name: string, tags: Tag[], tagName: string, expected: boolean) => {
-            const book = getRandomBook();
-            book.tags = tags;
+    it.each(testCases)('%s', (name: string, tags: Tag[], tagName: string, expected: boolean) => {
+        const book = getRandomBook();
+        book.tags = tags;
 
-            expect(book.hasTag(tagName)).toEqual(expected);
-        }
-    );
+        expect(book.hasTag(tagName)).toEqual(expected);
+    });
 });
