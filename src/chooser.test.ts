@@ -77,4 +77,16 @@ describe('choose method', () => {
             }
         });
     });
+
+    describe('ignore books currently being read', () => {
+        const books = [
+            new Book('Currently reading', '', 2023, '', 5, '28/10/2023', [positiveTag]),
+            new Book('Unread', '', 2023, '', 1, '', [negativeTag]),
+        ];
+        const choice = new Chooser().choose(books);
+
+        // First book is highly rated and would normally be picked, but it's
+        // already being read, so the second books is chosen despite its lower rating.
+        expect(choice).toEqual(books[1]);
+    });
 });
