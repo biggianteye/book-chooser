@@ -14,6 +14,11 @@ export class Chooser {
     }
 
     choose(books: Book[]): Book {
+        // Filter out books that are in progress
+        books = books.filter((book: Book) => {
+            return book.started ? false : true;
+        });
+
         // Filter out any excluded tags
         this.excludeTags.forEach((tagName: string) => {
             books = books.filter((book: Book) => {
