@@ -150,3 +150,6 @@ dist
 # Oauth files
 credentials.json
 token.json
+
+# Other files and directories
+.idea

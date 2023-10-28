@@ -28,7 +28,8 @@ The code doesn't know or care about the tag text. That's for humans. All it care
 | C      | Year published   | Integer      |
 | D      | Goodreads link   | String       |
 | E      | Goodreads rating | Number (2DP) |
-| F      | Date read        | Date         |
+| F      | Started          | Date         |
+| G      | Finished         | Date         |
 
 ### Tab: `Tags`
 

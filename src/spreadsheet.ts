@@ -26,10 +26,7 @@ export class Spreadsheet {
         const tagRows = await tagsSheet.getRows();
         const tags = new Map<string, Tag>();
         tagRows.forEach((row) => {
-            tags.set(
-                row.get('Name'),
-                new Tag(row.get('Name'), row.get('Modifier'))
-            );
+            tags.set(row.get('Name'), new Tag(row.get('Name'), row.get('Modifier')));
         });
 
         // Grab all the book->tag mappings, ready to add to new books in one go
@@ -58,6 +55,11 @@ export class Spreadsheet {
         const bookRows = await booksSheet.getRows();
         const books: Book[] = [];
         bookRows.forEach((row) => {
+            // Ignore any finished books
+            if (row.get('Finished')) {
+                return;
+            }
+            // Grab any other book, even if it's in progress
             books.push(
                 new Book(
                     row.get('Title'),
@@ -65,6 +67,7 @@ export class Spreadsheet {
                     row.get('Year published'),
                     row.get('Goodreads link'),
                     row.get('Goodreads rating'),
+                    row.get('Started'),
                     bookTags.get(row.get('Title'))
                 )
             );

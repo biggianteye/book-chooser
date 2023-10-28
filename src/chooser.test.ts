@@ -6,8 +6,14 @@ describe('choose method', () => {
     const neutralTag = new Tag('type:neutral', 0);
     const negativeTag = new Tag('type:negative', -1);
 
+    const someAuthor = 'the author';
+    const someYear = 2023;
+    const someLink = 'http://...';
+    const someRating = 2.5;
+    const emptyDate = '';
+
     test('a choice is made', () => {
-        const books = [new Book('the title', '', 0, '', 0)];
+        const books = [new Book('the title', someAuthor, someYear, someLink, someRating, emptyDate)];
 
         const choice = new Chooser().choose(books);
 
@@ -17,8 +23,8 @@ describe('choose method', () => {
 
     test('positive tags have higher priority', () => {
         const books = [
-            new Book('Positive Book', '', 0, '', 0, [positiveTag]),
-            new Book('Neutral Book', '', 0, '', 0, [neutralTag]),
+            new Book('Positive Book', someAuthor, someYear, someLink, someRating, emptyDate, [positiveTag]),
+            new Book('Neutral Book', someAuthor, someYear, someLink, someRating, emptyDate, [neutralTag]),
         ];
 
         const choice = new Chooser().choose(books);
@@ -29,8 +35,8 @@ describe('choose method', () => {
 
     test('negative tags have lower priority', () => {
         const books = [
-            new Book('Negative Book', '', 0, '', 0, [negativeTag]),
-            new Book('Neutral Book', '', 0, '', 0, [neutralTag]),
+            new Book('Negative Book', someAuthor, someYear, someLink, someRating, emptyDate, [negativeTag]),
+            new Book('Neutral Book', someAuthor, someYear, someLink, someRating, emptyDate, [neutralTag]),
         ];
 
         const choice = new Chooser().choose(books);
@@ -41,8 +47,8 @@ describe('choose method', () => {
 
     test('first book chosen when they are equal', () => {
         const books = [
-            new Book('Positive Book 1', '', 0, '', 0, [positiveTag]),
-            new Book('Positive Book 2', '', 0, '', 0, [positiveTag]),
+            new Book('Positive Book 1', someAuthor, someYear, someLink, someRating, emptyDate, [positiveTag]),
+            new Book('Positive Book 2', someAuthor, someYear, someLink, someRating, emptyDate, [positiveTag]),
         ];
 
         const choice = new Chooser().choose(books);
@@ -56,8 +62,8 @@ describe('choose method', () => {
         const betaTag = new Tag('beta');
         const gammaTag = new Tag('gamma');
 
-        const bookOne = new Book('Book One', '', 0, '', 5, [alphaTag, gammaTag]);
-        const bookTwo = new Book('Book Two', '', 0, '', 5, [betaTag, gammaTag]);
+        const bookOne = new Book('Book One', someAuthor, someYear, someLink, 5, emptyDate, [alphaTag, gammaTag]);
+        const bookTwo = new Book('Book Two', someAuthor, someYear, someLink, 5, emptyDate, [betaTag, gammaTag]);
 
         const testCases = [
             ['tag exists on some books', 'alpha', bookTwo],
@@ -76,5 +82,17 @@ describe('choose method', () => {
                 expect(choice).toEqual(expectedBook);
             }
         });
+    });
+
+    describe('ignore books currently being read', () => {
+        const books = [
+            new Book('Currently reading', someAuthor, someYear, someLink, 5, '28/10/2023', [positiveTag]),
+            new Book('Unread', someAuthor, someYear, someLink, 1, emptyDate, [negativeTag]),
+        ];
+        const choice = new Chooser().choose(books);
+
+        // First book is highly rated and would normally be picked, but it's
+        // already being read, so the second books is chosen despite its lower rating.
+        expect(choice).toEqual(books[1]);
     });
 });
