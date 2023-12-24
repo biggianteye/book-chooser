@@ -64,6 +64,27 @@ export class Book {
     }
 }
 
+/**
+ * Identical to a book but inlines the calculated rating, ready for export.
+ */
+export class ExportBook extends Book {
+    calculatedRating: number;
+
+    constructor(book: Book) {
+        super(
+            book.title,
+            book.author,
+            book.yearPublished,
+            book.goodreadsLink,
+            book.goodreadsRating,
+            book.started,
+            book.tags
+        );
+
+        this.calculatedRating = this.getCalculatedRating();
+    }
+}
+
 export class Tag {
     name: string;
     modifier: number;
