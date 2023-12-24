@@ -153,3 +153,7 @@ token.json
 
 # Other files and directories
 .idea
+
+# Exported data
+data.json
+
