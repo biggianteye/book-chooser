@@ -1,7 +1,8 @@
 repo_name: biggianteye/book-chooser
 report_id: 9e88ce5e9b478428ff28d50b3a76c236
+version: 0.1
 repo_type: Public
-timestamp: '2023-12-14T18:08:45+00:00'
+timestamp: '2024-01-05T08:22:28+00:00'
 requested_by: biggianteye
 provider: github
 branch: main
@@ -16,6 +17,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/biggianteye/book-chooser/blob/main/package.json
   detection_source: package.json
   last_updated_by: Burhan Ali
   last_updated_on: 2023-07-09 13:36:04.000000000 Z
@@ -28,6 +30,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1612/bynNY5dJ.jpg
+  detection_source_url: https://github.com/biggianteye/book-chooser
   detection_source: Repo Metadata
 - name: Node.js
   description: A platform built on Chrome's JavaScript runtime for easily building
@@ -38,6 +41,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/1011/n1JRsFeB_400x400.png
+  detection_source_url: https://github.com/biggianteye/book-chooser/blob/main/package.json
   detection_source: package.json
   last_updated_by: Burhan Ali
   last_updated_on: 2023-06-28 19:39:18.000000000 Z
@@ -50,6 +54,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Server Configuration and Automation
   image_url: https://img.stackshare.io/service/8067/default_90dcb1286af7685c68df319c764b80704df1155b.png
+  detection_source_url: https://github.com/biggianteye/book-chooser/blob/main/package.json
   detection_source: package.json
   last_updated_by: Burhan Ali
   last_updated_on: 2023-07-09 13:36:04.000000000 Z
@@ -62,6 +67,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Code Review
   image_url: https://img.stackshare.io/service/3337/Q4L7Jncy.jpg
+  detection_source_url: https://github.com/biggianteye/book-chooser/blob/main/package.json
   detection_source: package.json
   last_updated_by: Burhan Ali
   last_updated_on: 2023-06-28 19:39:18.000000000 Z
@@ -73,6 +79,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/biggianteye/book-chooser
   detection_source: Repo Metadata
 - name: Jest
   description: Painless JavaScript Unit Testing
@@ -111,6 +118,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Text Editor
   image_url: https://img.stackshare.io/service/4202/Visual_Studio_Code_logo.png
+  detection_source_url: https://github.com/biggianteye/book-chooser/blob/main/.vscode/tasks.json
   detection_source: ".vscode/tasks.json"
   last_updated_by: Burhan Ali
   last_updated_on: 2023-06-28 19:39:18.000000000 Z
@@ -122,6 +130,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Front End Package Manager
   image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+  detection_source_url: https://github.com/biggianteye/book-chooser/blob/main/package.json
   detection_source: package.json
   last_updated_by: Burhan Ali
   last_updated_on: 2023-06-28 19:39:18.000000000 Z
