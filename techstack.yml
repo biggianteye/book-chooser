@@ -1,0 +1,249 @@
+repo_name: biggianteye/book-chooser
+report_id: 9e88ce5e9b478428ff28d50b3a76c236
+version: 0.1
+repo_type: Public
+timestamp: '2024-02-29T19:03:41+00:00'
+requested_by: biggianteye
+provider: github
+branch: main
+detected_tools_count: 18
+tools:
+- name: JavaScript
+  description: Lightweight, interpreted, object-oriented language with first-class
+    functions
+  website_url: https://developer.mozilla.org/en-US/docs/Web/JavaScript
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1209/javascript.jpeg
+  detection_source_url: https://github.com/biggianteye/book-chooser/blob/main/package.json
+  detection_source: package.json
+  last_updated_by: Burhan Ali
+  last_updated_on: 2023-07-09 13:36:04.000000000 Z
+- name: TypeScript
+  description: A superset of JavaScript that compiles to clean JavaScript output
+  website_url: http://www.typescriptlang.org
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Languages
+  image_url: https://img.stackshare.io/service/1612/bynNY5dJ.jpg
+  detection_source_url: https://github.com/biggianteye/book-chooser
+  detection_source: Repo Metadata
+- name: Node.js
+  description: A platform built on Chrome's JavaScript runtime for easily building
+    fast, scalable network applications
+  website_url: http://nodejs.org/
+  open_source: true
+  hosted_saas: false
+  category: Languages & Frameworks
+  sub_category: Frameworks (Full Stack)
+  image_url: https://img.stackshare.io/service/1011/n1JRsFeB_400x400.png
+  detection_source_url: https://github.com/biggianteye/book-chooser/blob/main/package.json
+  detection_source: package.json
+  last_updated_by: Burhan Ali
+  last_updated_on: 2023-06-28 19:39:18.000000000 Z
+- name: Dotenv
+  description: Loads environment variables from .env for Nodejs projects
+  website_url: https://github.com/motdotla/dotenv
+  license: BSD-2-Clause
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Server Configuration and Automation
+  image_url: https://img.stackshare.io/service/8067/default_90dcb1286af7685c68df319c764b80704df1155b.png
+  detection_source_url: https://github.com/biggianteye/book-chooser/blob/main/package.json
+  detection_source: package.json
+  last_updated_by: Burhan Ali
+  last_updated_on: 2023-07-09 13:36:04.000000000 Z
+- name: ESLint
+  description: The fully pluggable JavaScript code quality tool
+  website_url: http://eslint.org/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Code Review
+  image_url: https://img.stackshare.io/service/3337/Q4L7Jncy.jpg
+  detection_source_url: https://github.com/biggianteye/book-chooser/blob/main/package.json
+  detection_source: package.json
+  last_updated_by: Burhan Ali
+  last_updated_on: 2023-06-28 19:39:18.000000000 Z
+- name: Git
+  description: Fast, scalable, distributed revision control system
+  website_url: http://git-scm.com/
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Version Control System
+  image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/biggianteye/book-chooser
+  detection_source: Repo Metadata
+- name: Jest
+  description: Painless JavaScript Unit Testing
+  website_url: http://facebook.github.io/jest/
+  version: 29.7.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Javascript Testing Framework
+  image_url: https://img.stackshare.io/service/830/jest.png
+  detection_source_url: https://github.com/biggianteye/book-chooser/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Burhan Ali
+  last_updated_on: 2023-06-28 19:39:18.000000000 Z
+- name: Prettier
+  description: Prettier is an opinionated code formatter.
+  website_url: https://prettier.io/
+  version: 2.8.8
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Code Review
+  image_url: https://img.stackshare.io/service/7035/default_66f265943abed56bcdbfca1c866a4261b1fbb063.jpg
+  detection_source_url: https://github.com/biggianteye/book-chooser/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Burhan Ali
+  last_updated_on: 2023-07-09 13:36:04.000000000 Z
+- name: Visual Studio Code
+  description: Build and debug modern web and cloud applications, by Microsoft
+  website_url: https://code.visualstudio.com/
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Text Editor
+  image_url: https://img.stackshare.io/service/4202/Visual_Studio_Code_logo.png
+  detection_source_url: https://github.com/biggianteye/book-chooser/blob/main/.vscode/tasks.json
+  detection_source: ".vscode/tasks.json"
+  last_updated_by: Burhan Ali
+  last_updated_on: 2023-06-28 19:39:18.000000000 Z
+- name: npm
+  description: The package manager for JavaScript.
+  website_url: https://www.npmjs.com/
+  open_source: false
+  hosted_saas: false
+  category: Build, Test, Deploy
+  sub_category: Front End Package Manager
+  image_url: https://img.stackshare.io/service/1120/lejvzrnlpb308aftn31u.png
+  detection_source_url: https://github.com/biggianteye/book-chooser/blob/main/package.json
+  detection_source: package.json
+  last_updated_by: Burhan Ali
+  last_updated_on: 2023-06-28 19:39:18.000000000 Z
+- name: "@types/jest"
+  description: TypeScript definitions for Jest
+  package_url: https://www.npmjs.com/@types/jest
+  version: 29.5.6
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15840/default_004658cda9b38934f2871435e9dc15608c86e8be.png
+  detection_source_url: https://github.com/biggianteye/book-chooser/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Burhan Ali
+  last_updated_on: 2023-07-09 13:36:04.000000000 Z
+- name: "@types/node"
+  description: TypeScript definitions for Node.js
+  package_url: https://www.npmjs.com/@types/node
+  version: 20.8.9
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15809/default_5e5e8ac63beda29f31f1844df64d4b8247570a66.png
+  detection_source_url: https://github.com/biggianteye/book-chooser/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Burhan Ali
+  last_updated_on: 2023-07-09 13:36:04.000000000 Z
+- name: "@typescript-eslint/eslint-plugin"
+  description: TypeScript plugin for ESLint
+  package_url: https://www.npmjs.com/@typescript-eslint/eslint-plugin
+  version: 5.62.0
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15982/default_8b5680d4e916298d08363c291a0d6e34c07ceb15.png
+  detection_source_url: https://github.com/biggianteye/book-chooser/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Burhan Ali
+  last_updated_on: 2023-07-09 13:36:04.000000000 Z
+- name: "@typescript-eslint/parser"
+  description: An ESLint custom parser which leverages TypeScript ESTree
+  package_url: https://www.npmjs.com/@typescript-eslint/parser
+  version: 5.62.0
+  license: BSD-2-Clause
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15980/default_732016a20524708efe7a4c77497fe9bfeea19ba6.png
+  detection_source_url: https://github.com/biggianteye/book-chooser/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Burhan Ali
+  last_updated_on: 2023-07-09 13:36:04.000000000 Z
+- name: google-auth-library
+  description: Google APIs Authentication Client Library for Node.js
+  package_url: https://www.npmjs.com/google-auth-library
+  version: 8.9.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/17925/default_72dbba22ca96f25f78f55f8ea5393222efca5494.png
+  detection_source_url: https://github.com/biggianteye/book-chooser/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Burhan Ali
+  last_updated_on: 2023-07-09 13:36:04.000000000 Z
+- name: googleapis
+  description: Google APIs Client Library for Node.js
+  package_url: https://www.npmjs.com/googleapis
+  version: 120.0.0
+  license: Apache-2.0
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/16842/default_d7dbced92f420888f118516ac7144afed4acf9ca.png
+  detection_source_url: https://github.com/biggianteye/book-chooser/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Burhan Ali
+  last_updated_on: 2023-07-09 13:36:04.000000000 Z
+- name: ts-jest
+  description: A preprocessor with source maps support to help use TypeScript with
+    Jest
+  package_url: https://www.npmjs.com/ts-jest
+  version: 29.1.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15864/default_6743ba96cf149a3c3c68a185199f9705d6eff80e.png
+  detection_source_url: https://github.com/biggianteye/book-chooser/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Burhan Ali
+  last_updated_on: 2023-07-09 13:36:04.000000000 Z
+- name: ts-node
+  description: TypeScript execution environment and REPL for node.js
+  package_url: https://www.npmjs.com/ts-node
+  version: 10.9.1
+  license: MIT
+  open_source: true
+  hosted_saas: false
+  category: Libraries
+  sub_category: npm Packages
+  image_url: https://img.stackshare.io/package/15830/default_6743ba96cf149a3c3c68a185199f9705d6eff80e.png
+  detection_source_url: https://github.com/biggianteye/book-chooser/blob/main/package-lock.json
+  detection_source: package.json
+  last_updated_by: Burhan Ali
+  last_updated_on: 2023-07-09 13:36:04.000000000 Z
