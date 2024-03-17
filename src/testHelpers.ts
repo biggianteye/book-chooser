@@ -7,7 +7,7 @@ export function getRandomBook(): Book {
         faker.person.fullName(),
         faker.number.int({ min: 1900, max: new Date().getFullYear() }),
         faker.internet.url(),
-        faker.number.float({ min: 1, max: 5, precision: 0.01 }),
+        faker.number.float({ min: 1, max: 5, multipleOf: 0.01 }),
         ''
     );
 }
