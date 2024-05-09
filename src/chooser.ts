@@ -1,15 +1,18 @@
 import { Book } from './types';
 
 type Options = {
-    excludeTags: string[];
+    excludeTags?: string[];
+    includeTags?: string[];
 };
 
 export class Chooser {
     private excludeTags: string[] = [];
+    private includeTags: string[] = [];
 
     constructor(options?: Options) {
         if (options !== undefined) {
             this.excludeTags = options.excludeTags ?? [];
+            this.includeTags = options.includeTags ?? [];
         }
     }
 
@@ -23,6 +26,13 @@ export class Chooser {
         this.excludeTags.forEach((tagName: string) => {
             books = books.filter((book: Book) => {
                 return !book.hasTag(tagName);
+            });
+        });
+
+        // Filter for any included tags
+        this.includeTags.forEach((tagName: string) => {
+            books = books.filter((book: Book) => {
+                return book.hasTag(tagName);
             });
         });
 
