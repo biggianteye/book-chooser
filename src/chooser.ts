@@ -1,15 +1,18 @@
 import { Book } from './types';
 
 type Options = {
-    excludeTags: string[];
+    excludeTags?: string[];
+    includeTags?: string[];
 };
 
 export class Chooser {
     private excludeTags: string[] = [];
+    private includeTags: string[] = [];
 
     constructor(options?: Options) {
         if (options !== undefined) {
             this.excludeTags = options.excludeTags ?? [];
+            this.includeTags = options.includeTags ?? [];
         }
     }
 

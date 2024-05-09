@@ -84,6 +84,35 @@ describe('choose method', () => {
         });
     });
 
+    describe('inclusion by single tag', () => {
+        const alphaTag = new Tag('alpha');
+        const betaTag = new Tag('beta');
+        const gammaTag = new Tag('gamma');
+        const deltaTag = new Tag('delta');
+
+        const bookOne = new Book('Book One', someAuthor, someYear, someLink, 5, emptyDate, [alphaTag, gammaTag]);
+        const bookTwo = new Book('Book Two', someAuthor, someYear, someLink, 5, emptyDate, [betaTag, gammaTag]);
+
+        const testCases = [
+            ['tag exists on first book', 'alpha', bookOne],
+            ['tag exists on second book', 'beta', bookTwo],
+            ['tag exists on all books', 'gamma', bookOne],
+            ['tag is on no books', 'delta', null],
+        ];
+
+        it.each(testCases)('%s', (name: string, tagName: string, expectedBook: Book) => {
+            const books = [bookOne, bookTwo];
+            const choice = new Chooser({ includeTags: [tagName] }).choose(books);
+
+            if (expectedBook == null) {
+                expect(choice).toBeNull();
+            } else {
+                expect(choice).not.toBeNull();
+                expect(choice).toEqual(expectedBook);
+            }
+        });
+    });
+
     describe('ignore books currently being read', () => {
         const books = [
             new Book('Currently reading', someAuthor, someYear, someLink, 5, '28/10/2023', [positiveTag]),
