@@ -12,6 +12,7 @@ async function main() {
 
     const chooser = new Chooser({
         excludeTags: args.exclude,
+        includeTags: args.include,
     });
 
     const choice = chooser.choose(books);

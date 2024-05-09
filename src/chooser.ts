@@ -29,6 +29,13 @@ export class Chooser {
             });
         });
 
+        // Filter for any included tags
+        this.includeTags.forEach((tagName: string) => {
+            books = books.filter((book: Book) => {
+                return book.hasTag(tagName);
+            });
+        });
+
         // Sort in descending order
         books.sort((a, b) => {
             return b.getCalculatedRating() - a.getCalculatedRating();
