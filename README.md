@@ -53,3 +53,7 @@ The code doesn't know or care about the tag text. That's for humans. All it care
     -   Tag to exclude.
     -   Can be used multiple times.
     -   Example: `--exclude format:e-book -e genre:sci-fi`
+-   `--include`, `-i`
+    -   Tag to include.
+    -   Can be used multiple times.
+    -   Example: `--include format:e-book -i genre:sci-fi`

@@ -1,11 +1,13 @@
 import { ArgumentConfig, ParseOptions, UsageGuideConfig } from 'ts-command-line-args';
 
 export interface CliOptions {
+    include?: string[];
     exclude?: string[];
     help?: boolean;
 }
 
 const argumentConfig: ArgumentConfig<CliOptions> = {
+    include: { type: String, optional: true, multiple: true, alias: 'i', description: 'Tag to include' },
     exclude: { type: String, optional: true, multiple: true, alias: 'e', description: 'Tag to exclude' },
     help: { type: Boolean, optional: true, alias: 'h', description: 'Prints this usage guide' },
 };
