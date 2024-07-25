@@ -17,7 +17,11 @@ async function main() {
 
     const choice = chooser.choose(books);
 
-    console.log(`${choice}`);
+    if (choice) {
+        console.log(`${choice}`);
+    } else {
+        console.log('No suitable book found.');
+    }
 }
 
 main();
