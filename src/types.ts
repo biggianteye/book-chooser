@@ -29,7 +29,7 @@ export class Book {
         const tagSum = this.tags.reduce((result: number, tag: Tag): number => {
             return result + tag.modifier;
         }, 0);
-        return tagSum + this.goodreadsRating;
+        return Number((tagSum + this.goodreadsRating).toFixed(2));
     }
 
     hasTag(name: string): boolean {
