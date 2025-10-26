@@ -94,10 +94,10 @@ describe('choose method', () => {
         const bookTwo = new Book('Book Two', someAuthor, someYear, someLink, 5, emptyDate, [betaTag, gammaTag]);
 
         const testCases = [
-            ['tag exists on first book', 'alpha', bookOne],
-            ['tag exists on second book', 'beta', bookTwo],
-            ['tag exists on all books', 'gamma', bookOne],
-            ['tag is on no books', 'delta', null],
+            ['tag exists on first book', alphaTag, bookOne],
+            ['tag exists on second book', betaTag, bookTwo],
+            ['tag exists on all books', gammaTag, bookOne],
+            ['tag is on no books', deltaTag, null],
         ];
 
         it.each(testCases)('%s', (name: string, tagName: string, expectedBook: Book) => {

@@ -22,7 +22,7 @@ async function loadSavedCredentialsIfExist(): Promise<OAuth2Client | null> {
         const content = await fs.readFile(TOKEN_PATH);
         const credentials = JSON.parse(content.toString());
         return <OAuth2Client>google.auth.fromJSON(credentials);
-    } catch (err) {
+    } catch (_err) {
         return null;
     }
 }
