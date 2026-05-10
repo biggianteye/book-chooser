@@ -3,48 +3,46 @@
 import * as fs from 'fs/promises';
 import * as path from 'path';
 import { authenticate } from '@google-cloud/local-auth';
-import { google } from 'googleapis';
 import { OAuth2Client } from 'google-auth-library';
 
 // If modifying these scopes, delete token.json.
 const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 // The file token.json stores the user's access and refresh tokens, and is
-// created automatically when the authorization flow completes for the first
+// created automatically when the authorisation flow completes for the first
 // time.
 const TOKEN_PATH = path.join(process.cwd(), 'token.json');
 const CREDENTIALS_PATH = path.join(process.cwd(), 'credentials.json');
 
 /**
- * Reads previously authorized credentials from the save file.
+ * Reads previously authorised credentials from the save file.
  */
 async function loadSavedCredentialsIfExist(): Promise<OAuth2Client | null> {
     try {
-        const content = await fs.readFile(TOKEN_PATH);
-        const credentials = JSON.parse(content.toString());
-        return <OAuth2Client>google.auth.fromJSON(credentials);
+        const [credentialsContent, tokenContent] = await Promise.all([
+            fs.readFile(CREDENTIALS_PATH, 'utf8'),
+            fs.readFile(TOKEN_PATH, 'utf8'),
+        ]);
+
+        const credentials = JSON.parse(credentialsContent)
+        const token = JSON.parse(tokenContent);
+
+        const credentialsKey = credentials.installed || credentials.web;
+
+        const client = new OAuth2Client(
+            credentialsKey.client_id,
+            credentialsKey.client_secret,
+            credentialsKey.redirect_uris[0],
+        );
+
+        client.setCredentials(token);
+        return client;
     } catch (_err) {
         return null;
     }
 }
 
 /**
- * Serializes credentials to a file comptible with GoogleAUth.fromJSON.
- */
-async function saveCredentials(client: OAuth2Client): Promise<void> {
-    const content = await fs.readFile(CREDENTIALS_PATH);
-    const keys = JSON.parse(content.toString());
-    const key = keys.installed || keys.web;
-    const payload = JSON.stringify({
-        type: 'authorized_user',
-        client_id: key.client_id,
-        client_secret: key.client_secret,
-        refresh_token: client.credentials.refresh_token,
-    });
-    await fs.writeFile(TOKEN_PATH, payload);
-}
-
-/**
- * Load or request or authorization to call APIs.
+ * Load or request or authorisation to call APIs.
  */
 async function Authorize(): Promise<OAuth2Client> {
     let client = await loadSavedCredentialsIfExist();
@@ -56,7 +54,7 @@ async function Authorize(): Promise<OAuth2Client> {
         keyfilePath: CREDENTIALS_PATH,
     });
     if (client.credentials) {
-        await saveCredentials(client);
+        await fs.writeFile(TOKEN_PATH, JSON.stringify(client.credentials, null, 2));
     }
     return client;
 }
