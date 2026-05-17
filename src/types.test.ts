@@ -1,4 +1,4 @@
-import { Book, Tag } from './types';
+import { Book, ExportBook, Tag } from './types';
 import { getRandomBook } from './testHelpers';
 
 describe('calculated book ratings', () => {
@@ -23,6 +23,7 @@ describe('calculated book ratings', () => {
 
 describe('tag display', () => {
     const testCases = [
+        ['default modifier', new Tag('foo'), '[foo]'],
         ['positive tag', new Tag('foo', 1), '[foo(+)]'],
         ['neutral tag', new Tag('bar', 0), '[bar]'],
         ['negative tag', new Tag('baz', -1), '[baz(-)]'],
@@ -87,5 +88,43 @@ describe('whether or not a book has a tag', () => {
         book.tags = tags;
 
         expect(book.hasTag(tagName)).toEqual(expected);
+    });
+});
+
+describe('setting book tags', () => {
+    test('setTags updates the tags and returns the same book instance', () => {
+        const book = getRandomBook();
+        const tags = [new Tag('alpha', 1), new Tag('beta', -1)];
+
+        const updatedBook = book.setTags(tags);
+
+        expect(updatedBook).toBe(book);
+        expect(book.tags).toEqual(tags);
+    });
+});
+
+describe('export books', () => {
+    test('ExportBook copies the book and stores the calculated rating', () => {
+        const book = new Book(
+            'AAA',
+            'BBB',
+            2003,
+            'https://www.goodreads.com/...',
+            4.5,
+            '',
+            [new Tag('alpha', 1), new Tag('beta', -2)]
+        );
+
+        const exportBook = new ExportBook(book);
+
+        expect(exportBook).toBeInstanceOf(Book);
+        expect(exportBook.title).toEqual(book.title);
+        expect(exportBook.author).toEqual(book.author);
+        expect(exportBook.yearPublished).toEqual(book.yearPublished);
+        expect(exportBook.goodreadsLink).toEqual(book.goodreadsLink);
+        expect(exportBook.goodreadsRating).toEqual(book.goodreadsRating);
+        expect(exportBook.started).toEqual(book.started);
+        expect(exportBook.tags).toEqual(book.tags);
+        expect(exportBook.calculatedRating).toEqual(3.5);
     });
 });
