@@ -1,5 +1,7 @@
-import { Book, ExportBook, Tag } from './types';
+import { describe, expect, test } from "vitest";
+
 import { getRandomBook } from './testHelpers';
+import { Book, ExportBook, Tag } from './types';
 
 describe('calculated book ratings', () => {
     const testCases = [
@@ -16,7 +18,7 @@ describe('calculated book ratings', () => {
         ],
     ];
 
-    it.each(testCases)('%s', (name: string, book: Book, expected: number) => {
+    test.each(testCases)('%s', (name: string, book: Book, expected: number) => {
         expect(book.getCalculatedRating()).toEqual(expected);
     });
 });
@@ -30,7 +32,7 @@ describe('tag display', () => {
         ['modifier magnitude does not matter', new Tag('bat', 5), '[bat(+)]'],
     ];
 
-    it.each(testCases)('%s', (name: string, tag: Tag, expected: string) => {
+    test.each(testCases)('%s', (name: string, tag: Tag, expected: string) => {
         expect(tag.toString()).toEqual(expected);
     });
 });
@@ -64,7 +66,7 @@ describe('book display', () => {
         ],
     ];
 
-    it.each(testCases)('%s', (name: string, book: Book, expected: string) => {
+    test.each(testCases)('%s', (name: string, book: Book, expected: string) => {
         expect(book.toString()).toEqual(expected);
     });
 });
@@ -83,7 +85,7 @@ describe('whether or not a book has a tag', () => {
         ['regular tags, existing name', tagList, 'lorem', true],
     ];
 
-    it.each(testCases)('%s', (name: string, tags: Tag[], tagName: string, expected: boolean) => {
+    test.each(testCases)('%s', (name: string, tags: Tag[], tagName: string, expected: boolean) => {
         const book = getRandomBook();
         book.tags = tags;
 

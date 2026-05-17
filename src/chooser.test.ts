@@ -1,3 +1,5 @@
+import { describe, expect, test } from "vitest";
+
 import { Chooser } from './chooser';
 import { Book, Tag } from './types';
 
@@ -71,7 +73,7 @@ describe('choose method', () => {
             ['tag is on no books', 'delta', bookOne],
         ];
 
-        it.each(testCases)('%s', (name: string, tagName: string, expectedBook: Book) => {
+        test.each(testCases)('%s', (name: string, tagName: string, expectedBook: Book) => {
             const books = [bookOne, bookTwo];
             const choice = new Chooser({ excludeTags: [tagName] }).choose(books);
 
@@ -100,7 +102,7 @@ describe('choose method', () => {
             ['tag is on no books', deltaTag, null],
         ];
 
-        it.each(testCases)('%s', (name: string, tag: Tag, expectedBook: Book) => {
+        test.each(testCases)('%s', (name: string, tag: Tag, expectedBook: Book) => {
             const books = [bookOne, bookTwo];
             const choice = new Chooser({ includeTags: [tag.name] }).choose(books);
 
@@ -113,7 +115,7 @@ describe('choose method', () => {
         });
     });
 
-    describe('ignore books currently being read', () => {
+    test('ignore books currently being read', () => {
         const books = [
             new Book('Currently reading', someAuthor, someYear, someLink, 5, '28/10/2023', [positiveTag]),
             new Book('Unread', someAuthor, someYear, someLink, 1, emptyDate, [negativeTag]),
