@@ -23,7 +23,7 @@ async function loadSavedCredentialsIfExist(): Promise<OAuth2Client | null> {
             fs.readFile(TOKEN_PATH, 'utf8'),
         ]);
 
-        const credentials = JSON.parse(credentialsContent)
+        const credentials = JSON.parse(credentialsContent);
         const token = JSON.parse(tokenContent);
 
         const credentialsKey = credentials.installed || credentials.web;
@@ -31,7 +31,7 @@ async function loadSavedCredentialsIfExist(): Promise<OAuth2Client | null> {
         const client = new OAuth2Client(
             credentialsKey.client_id,
             credentialsKey.client_secret,
-            credentialsKey.redirect_uris[0],
+            credentialsKey.redirect_uris[0]
         );
 
         client.setCredentials(token);

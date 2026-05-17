@@ -1,4 +1,4 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test } from 'vitest';
 
 import { getRandomBook } from './testHelpers';
 import { Book, ExportBook, Tag } from './types';
@@ -107,15 +107,10 @@ describe('setting book tags', () => {
 
 describe('export books', () => {
     test('ExportBook copies the book and stores the calculated rating', () => {
-        const book = new Book(
-            'AAA',
-            'BBB',
-            2003,
-            'https://www.goodreads.com/...',
-            4.5,
-            '',
-            [new Tag('alpha', 1), new Tag('beta', -2)]
-        );
+        const book = new Book('AAA', 'BBB', 2003, 'https://www.goodreads.com/...', 4.5, '', [
+            new Tag('alpha', 1),
+            new Tag('beta', -2),
+        ]);
 
         const exportBook = new ExportBook(book);
 
