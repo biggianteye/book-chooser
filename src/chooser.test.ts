@@ -100,9 +100,9 @@ describe('choose method', () => {
             ['tag is on no books', deltaTag, null],
         ];
 
-        it.each(testCases)('%s', (name: string, tagName: string, expectedBook: Book) => {
+        it.each(testCases)('%s', (name: string, tag: Tag, expectedBook: Book) => {
             const books = [bookOne, bookTwo];
-            const choice = new Chooser({ includeTags: [tagName] }).choose(books);
+            const choice = new Chooser({ includeTags: [tag.name] }).choose(books);
 
             if (expectedBook == null) {
                 expect(choice).toBeNull();
