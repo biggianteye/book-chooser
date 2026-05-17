@@ -21,17 +21,24 @@ export class Spreadsheet {
     }
 
     async parse(): Promise<Book[]> {
-        // Grab all the tags
         const tagsSheet = this.doc.sheetsByTitle['Tags'];
-        const tagRows = await tagsSheet.getRows();
+        const bookTagsSheet = this.doc.sheetsByTitle['Book Tags'];
+        const booksSheet = this.doc.sheetsByTitle['Books'];
+
+        // Fetch all row sets in parallel; processing still happens in dependency order.
+        const [tagRows, bookTagsRows, bookRows] = await Promise.all([
+            tagsSheet.getRows(),
+            bookTagsSheet.getRows(),
+            booksSheet.getRows(),
+        ]);
+
+        // Grab all the tags
         const tags = new Map<string, Tag>();
         tagRows.forEach((row) => {
             tags.set(row.get('Name'), new Tag(row.get('Name'), row.get('Modifier')));
         });
 
         // Grab all the book->tag mappings, ready to add to new books in one go
-        const bookTagsSheet = this.doc.sheetsByTitle['Book Tags'];
-        const bookTagsRows = await bookTagsSheet.getRows();
         const bookTags: Map<string, Tag[]> = new Map();
         bookTagsRows.forEach((row) => {
             const bookName = row.get('Title') as string;
@@ -51,8 +58,6 @@ export class Spreadsheet {
         });
 
         // Grab all the books, including their tags
-        const booksSheet = this.doc.sheetsByTitle['Books'];
-        const bookRows = await booksSheet.getRows();
         const books: Book[] = [];
         bookRows.forEach((row) => {
             // Ignore any finished books
