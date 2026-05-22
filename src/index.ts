@@ -6,7 +6,7 @@ import { CliOptions, usageGuideInfo } from './cli-config';
 
 async function main() {
     if (!process.env.SHEET_ID) {
-        console.error('Missing SHEET_ID environment variable. Please set it to the ID of the Google Sheet to export from.');
+        console.error('Missing SHEET_ID environment variable. Please set it to the ID of the Google Sheet to read from.');
         process.exit(1);
     }
 
