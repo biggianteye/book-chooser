@@ -13,20 +13,59 @@ const SCOPES = ['https://www.googleapis.com/auth/spreadsheets.readonly'];
 const TOKEN_PATH = path.join(process.cwd(), 'token.json');
 const CREDENTIALS_PATH = path.join(process.cwd(), 'credentials.json');
 
+function isNodeErrorWithCode(error: unknown, code: string): boolean {
+    return (
+        typeof error === 'object' &&
+        error !== null &&
+        'code' in error &&
+        (error as { code?: string }).code === code
+    );
+}
+
+function exitWithAuthError(message: string, error?: unknown): never {
+    console.error(message);
+    if (error instanceof Error) {
+        console.error(`Reason: ${error.message}`);
+    }
+    process.exit(1);
+}
+
 /**
  * Reads previously authorised credentials from the save file.
  */
 async function loadSavedCredentialsIfExist(): Promise<OAuth2Client | null> {
-    try {
-        const [credentialsContent, tokenContent] = await Promise.all([
-            fs.readFile(CREDENTIALS_PATH, 'utf8'),
-            fs.readFile(TOKEN_PATH, 'utf8'),
-        ]);
+    let credentialsContent: string;
+    let tokenContent: string;
 
+    try {
+        credentialsContent = await fs.readFile(CREDENTIALS_PATH, 'utf8');
+    } catch (error) {
+        exitWithAuthError(
+            `Unable to read ${CREDENTIALS_PATH}. Check that credentials.json exists and is readable.`,
+            error
+        );
+    }
+
+    try {
+        tokenContent = await fs.readFile(TOKEN_PATH, 'utf8');
+    } catch (error) {
+        if (isNodeErrorWithCode(error, 'ENOENT')) {
+            return null;
+        }
+
+        exitWithAuthError(`Unable to read ${TOKEN_PATH}.`, error);
+    }
+
+    try {
         const credentials = JSON.parse(credentialsContent);
         const token = JSON.parse(tokenContent);
-
         const credentialsKey = credentials.installed || credentials.web;
+
+        if (!credentialsKey) {
+            exitWithAuthError(
+                'credentials.json is missing expected OAuth fields (installed/web).'
+            );
+        }
 
         const client = new OAuth2Client(
             credentialsKey.client_id,
@@ -36,8 +75,11 @@ async function loadSavedCredentialsIfExist(): Promise<OAuth2Client | null> {
 
         client.setCredentials(token);
         return client;
-    } catch (_err) {
-        return null;
+    } catch (error) {
+        exitWithAuthError(
+            'Unable to parse saved credentials/token JSON. Check credentials.json and token.json formatting.',
+            error
+        );
     }
 }
 
@@ -49,13 +91,19 @@ async function Authorize(): Promise<OAuth2Client> {
     if (client) {
         return client;
     }
-    client = await authenticate({
-        scopes: SCOPES,
-        keyfilePath: CREDENTIALS_PATH,
-    });
-    if (client.credentials) {
-        await fs.writeFile(TOKEN_PATH, JSON.stringify(client.credentials, null, 2));
+
+    try {
+        client = await authenticate({
+            scopes: SCOPES,
+            keyfilePath: CREDENTIALS_PATH,
+        });
+        if (client.credentials) {
+            await fs.writeFile(TOKEN_PATH, JSON.stringify(client.credentials, null, 2));
+        }
+    } catch (error) {
+        exitWithAuthError('Failed to complete Google Sheets authorisation.', error);
     }
+
     return client;
 }
 
