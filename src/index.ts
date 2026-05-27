@@ -20,12 +20,18 @@ async function main() {
         includeTags: args.include,
     });
 
-    const choice = chooser.choose(books);
+    const limit = args.limit ?? 1;
+    const choices = chooser.choose(books, limit);
 
-    if (choice) {
-        console.log(`${choice}`);
-    } else {
+    if (choices.length === 0) {
         console.log('No suitable book found.');
+    } else {
+        choices.forEach((choice, index) => {
+            if (index > 0) {
+                console.log(''); // Empty line between books
+            }
+            console.log(`${choice}`);
+        });
     }
 }
 

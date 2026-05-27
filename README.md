@@ -57,3 +57,7 @@ The code doesn't know or care about the tag text. That's for humans. All it care
     -   Tag to include.
     -   Can be used multiple times.
     -   Example: `--include format:e-book -i genre:sci-fi`
+- `--limit`, `-l`
+    -   Limit the number of books displayed.
+    -   Example: `--limit 5`
+    -   Default: 1

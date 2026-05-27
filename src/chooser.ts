@@ -16,7 +16,7 @@ export class Chooser {
         }
     }
 
-    choose(books: Book[]): Book {
+    choose(books: Book[], limit: number = 1): Book[] {
         // Filter out books that are in progress
         books = books.filter((book: Book) => {
             return book.started ? false : true;
@@ -41,6 +41,6 @@ export class Chooser {
             return b.getCalculatedRating() - a.getCalculatedRating();
         });
 
-        return books.length == 0 ? null : books[0];
+        return books.slice(0, limit);
     }
 }
