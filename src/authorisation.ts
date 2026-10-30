@@ -14,12 +14,7 @@ const TOKEN_PATH = path.join(process.cwd(), 'token.json');
 const CREDENTIALS_PATH = path.join(process.cwd(), 'credentials.json');
 
 function isNodeErrorWithCode(error: unknown, code: string): boolean {
-    return (
-        typeof error === 'object' &&
-        error !== null &&
-        'code' in error &&
-        (error as { code?: string }).code === code
-    );
+    return typeof error === 'object' && error !== null && 'code' in error && (error as { code?: string }).code === code;
 }
 
 function exitWithAuthError(message: string, error?: unknown): never {
@@ -42,7 +37,7 @@ async function loadSavedCredentialsIfExist(): Promise<OAuth2Client | null> {
     } catch (error) {
         exitWithAuthError(
             `Unable to read ${CREDENTIALS_PATH}. Check that credentials.json exists and is readable.`,
-            error
+            error,
         );
     }
 
@@ -62,15 +57,13 @@ async function loadSavedCredentialsIfExist(): Promise<OAuth2Client | null> {
         const credentialsKey = credentials.installed || credentials.web;
 
         if (!credentialsKey) {
-            exitWithAuthError(
-                'credentials.json is missing expected OAuth fields (installed/web).'
-            );
+            exitWithAuthError('credentials.json is missing expected OAuth fields (installed/web).');
         }
 
         const client = new OAuth2Client(
             credentialsKey.client_id,
             credentialsKey.client_secret,
-            credentialsKey.redirect_uris[0]
+            credentialsKey.redirect_uris[0],
         );
 
         client.setCredentials(token);
@@ -78,7 +71,7 @@ async function loadSavedCredentialsIfExist(): Promise<OAuth2Client | null> {
     } catch (error) {
         exitWithAuthError(
             'Unable to parse saved credentials/token JSON. Check credentials.json and token.json formatting.',
-            error
+            error,
         );
     }
 }

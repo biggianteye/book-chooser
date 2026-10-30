@@ -14,7 +14,7 @@ export class Book {
         goodreadsLink: string,
         goodreadsRating: number,
         started: string,
-        tags: Tag[] = []
+        tags: Tag[] = [],
     ) {
         this.title = title;
         this.author = author;
@@ -78,7 +78,7 @@ export class ExportBook extends Book {
             book.goodreadsLink,
             book.goodreadsRating,
             book.started,
-            book.tags
+            book.tags,
         );
 
         this.calculatedRating = this.getCalculatedRating();

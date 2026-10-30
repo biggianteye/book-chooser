@@ -8,6 +8,6 @@ export function getRandomBook(): Book {
         faker.number.int({ min: 1900, max: new Date().getFullYear() }),
         faker.internet.url(),
         faker.number.float({ min: 1, max: 5, multipleOf: 0.01 }),
-        ''
+        '',
     );
 }

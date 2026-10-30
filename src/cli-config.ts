@@ -10,7 +10,13 @@ export interface CliOptions {
 const argumentConfig: ArgumentConfig<CliOptions> = {
     include: { type: String, optional: true, multiple: true, alias: 'i', description: 'Tag to include' },
     exclude: { type: String, optional: true, multiple: true, alias: 'e', description: 'Tag to exclude' },
-    limit: { type: Number, optional: true, defaultValue: 1, alias: 'l', description: 'Number of books to show (default: 1)' },
+    limit: {
+        type: Number,
+        optional: true,
+        defaultValue: 1,
+        alias: 'l',
+        description: 'Number of books to show (default: 1)',
+    },
     help: { type: Boolean, optional: true, alias: 'h', description: 'Prints this usage guide' },
 };
 
